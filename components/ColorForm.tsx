@@ -9,16 +9,20 @@ export default function ColorForm() {
   const [colorName, setColorName] = useState("");
 
   return (
-    <form className="w-[300px] border rounded-lg p-4">
+    <form className="bg-slate-50 w-[300px] border rounded-lg p-4">
       <Input
         label="Name:"
         value={colorName}
         onChange={(e) => setColorName(e.target.value)}
+        type="text"
+        required
       />
       <Input
         label="Hex:"
         value={color}
         onChange={(e) => setColor(e.target.value)}
+        type="text"
+        required
       />
       <div className="flex">
         <div className="w-1/4 text-right">
