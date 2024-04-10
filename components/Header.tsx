@@ -8,7 +8,7 @@ function Header() {
       className={`bg-gray-800 flex justify-between items-center h-14 px-8 py-4`}
     >
       <Link href="/" className="flex items-center">
-        <p className={`text-gray-100 ml-4 font-semibold text-2xl mr-auto`}>
+        <p className={`text-gray-100 ml-4 font-semibold text-xl mr-auto`}>
           The Unit - Task Assignement
         </p>
       </Link>
