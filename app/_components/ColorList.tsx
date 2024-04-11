@@ -4,7 +4,6 @@ function ColorList({ items }: { items: Color[] }) {
   return (
     <ul>
       {items.map((item) => {
-        console.log(item.name);
         return (
           <li className="flex items-center justify-between mb-2" key={item.id}>
             <div className="flex items-center">

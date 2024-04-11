@@ -8,7 +8,7 @@ export default async function Home() {
   if (response.ok) {
     colors = await response.json();
   }
-  console.log("[Home] colors:", colors);
+
   return (
     <div className="flex justify-center items-center w-full">
       <div className="w-[300px] md:mr-14">

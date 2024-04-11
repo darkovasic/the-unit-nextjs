@@ -3,13 +3,23 @@
 import { useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import Input from "@/components/Input";
+import { createColor } from "../util/actions";
 
 export default function ColorForm() {
   const [color, setColor] = useState("#aabbcc");
   const [colorName, setColorName] = useState("");
 
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const response = await createColor(colorName, color);
+    console.log(response.message);
+  };
+
   return (
-    <form className="bg-slate-50 w-[300px] h-[414px] border rounded-lg p-4">
+    <form
+      onSubmit={onSubmit}
+      className="bg-slate-50 w-[300px] h-[414px] border rounded-lg p-4"
+    >
       <Input
         label="Name:"
         value={colorName}
