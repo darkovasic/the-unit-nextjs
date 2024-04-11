@@ -6,7 +6,8 @@ import { deleteColor } from "../util/actions";
 
 function ColorList({ items }: { items: Color[] }) {
   const handleDelete = (id: number) => async (): Promise<void> => {
-    await deleteColor(id);
+    const response = await deleteColor(id);
+    console.log(response.message);
     return;
   };
 
