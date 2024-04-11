@@ -1,6 +1,16 @@
-function DeleteButton({ onClick }: { onClick: () => void }) {
+"use client";
+
+import { deleteColor } from "@/app/util/actions";
+
+function DeleteButton({ id }: { id: number }) {
+  const handleDelete = (id: number) => async (): Promise<void> => {
+    const response = await deleteColor(id);
+    console.log(response.message);
+    return;
+  };
+
   return (
-    <div className="cursor-pointer" onClick={onClick}>
+    <div className="cursor-pointer" onClick={handleDelete(id)}>
       <svg
         width="25"
         height="25"

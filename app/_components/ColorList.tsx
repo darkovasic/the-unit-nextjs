@@ -1,19 +1,11 @@
-"use client";
-
 import DeleteButton from "@/components/DeleteButton";
-import type { Color } from "../util/types";
-import { deleteColor } from "../util/actions";
+import { fetchFilteredColors } from "../util/actions";
 
-function ColorList({ items }: { items: Color[] }) {
-  const handleDelete = (id: number) => async (): Promise<void> => {
-    const response = await deleteColor(id);
-    console.log(response.message);
-    return;
-  };
-
+async function ColorList({ query }: { query?: string }) {
+  const items = await fetchFilteredColors(query);
   return (
     <ul>
-      {items.map((item) => {
+      {items?.map((item) => {
         return (
           <li className="flex items-center justify-between mb-2" key={item.id}>
             <div className="flex items-center">
@@ -23,7 +15,7 @@ function ColorList({ items }: { items: Color[] }) {
               ></div>
               <div>{item.name}</div>
             </div>
-            <DeleteButton onClick={handleDelete(item.id)} />
+            <DeleteButton id={item.id} />
           </li>
         );
       })}

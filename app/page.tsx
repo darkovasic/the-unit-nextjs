@@ -2,12 +2,12 @@ import ColorForm from "./_components/ColorForm";
 import ColorList from "./_components/ColorList";
 import FilterColors from "./_components/FilterColors";
 
-export default async function Home() {
-  let colors = null;
-  const response = await fetch(`${process.env.API_URL}/api/colors/`);
-  if (response.ok) {
-    colors = await response.json();
-  }
+type ParamsProps = {
+  searchParams: { query?: string };
+};
+
+export default async function Home({ searchParams }: ParamsProps) {
+  const query = searchParams?.query || "";
 
   return (
     <div className="flex justify-center items-center w-full">
@@ -19,7 +19,7 @@ export default async function Home() {
           <FilterColors />
           <hr />
           <div className="overflow-y-scroll max-h-[320px] p-4">
-            <ColorList items={colors} />
+            <ColorList query={query} />
           </div>
         </div>
       </div>

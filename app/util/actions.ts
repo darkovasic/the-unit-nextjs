@@ -1,6 +1,28 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import type { Color } from "../util/types";
+
+export async function fetchFilteredColors(query?: string) {
+  let colors: Color[] | null = null;
+
+  if (query) {
+    const response = await fetch(
+      `${process.env.API_URL}/api/search?search=${query}`
+    );
+    if (response.ok) {
+      colors = await response.json();
+    }
+  } else {
+    const response = await fetch(`${process.env.API_URL}/api/colors/`);
+    if (response.ok) {
+      colors = await response.json();
+    }
+  }
+
+  revalidatePath("/");
+  return colors;
+}
 
 export async function createColor(name: string, hex: string) {
   try {
