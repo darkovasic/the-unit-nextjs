@@ -21,3 +21,16 @@ export async function createColor(name: string, hex: string) {
     return { isError: true, message: (error as Error).message };
   }
 }
+
+export async function deleteColor(id: number) {
+  try {
+    await fetch(`${process.env.API_URL}/api/colors/${id}`, {
+      method: "DELETE",
+    });
+
+    revalidatePath("/");
+    return { isError: false, message: "Color deleted successfully" };
+  } catch (error) {
+    return { isError: true, message: (error as Error).message };
+  }
+}
