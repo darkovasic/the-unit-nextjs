@@ -9,7 +9,7 @@ export default function ColorForm() {
   const [colorName, setColorName] = useState("");
 
   return (
-    <form className="bg-slate-50 w-[300px] border rounded-lg p-4">
+    <form className="bg-slate-50 w-[300px] h-[414px] border rounded-lg p-4">
       <Input
         label="Name:"
         value={colorName}

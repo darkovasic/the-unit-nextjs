@@ -1,8 +1,14 @@
-import ColorForm from "@/components/ColorForm";
+import ColorForm from "./_components/ColorForm";
 import ColorList from "./_components/ColorList";
 import FilterColors from "./_components/FilterColors";
 
-export default function Home() {
+export default async function Home() {
+  let colors = null;
+  const response = await fetch(`${process.env.API_URL}/api/colors/`);
+  if (response.ok) {
+    colors = await response.json();
+  }
+  console.log("[Home] colors:", colors);
   return (
     <div className="flex justify-center items-center w-full">
       <div className="w-[300px] md:mr-14">
@@ -13,7 +19,7 @@ export default function Home() {
           <FilterColors />
           <hr />
           <div className="overflow-y-scroll max-h-[320px] p-4">
-            <ColorList />
+            <ColorList items={colors} />
           </div>
         </div>
       </div>
