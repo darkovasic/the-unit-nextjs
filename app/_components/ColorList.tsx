@@ -1,4 +1,4 @@
-import DeleteButton from "@/components/DeleteButton";
+import DeleteButton from "./DeleteButton";
 import { fetchFilteredColors } from "../util/actions";
 
 async function ColorList({ query }: { query?: string }) {
