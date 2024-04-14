@@ -1,10 +1,10 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import type { Color } from "../util/types";
+import type { ColorData } from "../util/types";
 
 export async function fetchFilteredColors(query?: string) {
-  let colors: Color[] | null = null;
+  let colors: ColorData | null = null;
 
   if (query) {
     const response = await fetch(
@@ -21,7 +21,7 @@ export async function fetchFilteredColors(query?: string) {
   }
 
   revalidatePath("/");
-  return colors;
+  return colors?.data;
 }
 
 export async function createColor(name: string, hex: string) {
