@@ -10,8 +10,8 @@ export default async function Home({ searchParams }: ParamsProps) {
   const query = searchParams?.query || "";
 
   return (
-    <div className="flex justify-center items-center w-full">
-      <div className="w-[300px] md:mr-14">
+    <div className="flex flex-col md:flex-row justify-center items-center w-full my-8 md:my-0">
+      <div className="w-[300px] md:mr-14 mb-8 md:mb-0">
         <h2 className="text-center text-lg font-semibold text-gray-900 mb-2">
           Stored Colors
         </h2>
