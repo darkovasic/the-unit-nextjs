@@ -4,15 +4,20 @@ import { useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import Input from "@/components/Input";
 import { createColor } from "../util/actions";
+import { useToast } from "@/hooks/useToast";
 
 export default function ColorForm() {
   const [color, setColor] = useState("#aabbcc");
   const [colorName, setColorName] = useState("");
+  const { toast } = useToast();
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const response = await createColor(colorName, color);
-    console.log(response.message);
+    toast({
+      description: response.message,
+    });
+    setColorName("");
   };
 
   return (

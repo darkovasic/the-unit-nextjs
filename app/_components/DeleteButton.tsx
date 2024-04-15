@@ -1,11 +1,16 @@
 "use client";
 
 import { deleteColor } from "@/app/util/actions";
+import { useToast } from "@/hooks/useToast";
 
 function DeleteButton({ id }: { id: number }) {
+  const { toast } = useToast();
+
   const handleDelete = (id: number) => async (): Promise<void> => {
     const response = await deleteColor(id);
-    console.log(response.message);
+    toast({
+      description: response.message,
+    });
     return;
   };
 
