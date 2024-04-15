@@ -32,7 +32,7 @@ describe("ColorForm component", () => {
 
     await waitFor(() =>
       expect(mockToast).toHaveBeenCalledWith({
-        description: "Color created successfully",
+        title: "Color created successfully",
       })
     );
   });

@@ -9,7 +9,7 @@ function DeleteButton({ id }: { id: number }) {
   const handleDelete = (id: number) => async (): Promise<void> => {
     const response = await deleteColor(id);
     toast({
-      description: response.message,
+      title: response.message,
     });
     return;
   };

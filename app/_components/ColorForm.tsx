@@ -15,7 +15,7 @@ export default function ColorForm() {
     e.preventDefault();
     const response = await createColor(colorName, color);
     toast({
-      description: response.message,
+      title: response.message,
     });
     setColorName("");
   };
