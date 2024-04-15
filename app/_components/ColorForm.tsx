@@ -26,14 +26,16 @@ export default function ColorForm() {
       className="bg-slate-50 w-[300px] h-[414px] border rounded-lg p-4"
     >
       <Input
-        label="Name:"
+        label="Name"
+        id="name"
         value={colorName}
         onChange={(e) => setColorName(e.target.value)}
         type="text"
         required
       />
       <Input
-        label="Hex:"
+        label="Hex"
+        id="hex"
         value={color}
         onChange={(e) => setColor(e.target.value)}
         type="text"
