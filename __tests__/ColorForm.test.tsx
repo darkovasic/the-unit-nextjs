@@ -1,4 +1,4 @@
-import { render, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import ColorForm from "@/app/_components/ColorForm";
 
@@ -17,18 +17,20 @@ jest.mock("@/hooks/useToast", () => ({
 
 describe("ColorForm component", () => {
   it("Should submit form with color name and hex value", async () => {
-    const { getByLabelText, getByText } = render(<ColorForm />);
+    render(<ColorForm />);
 
     // Fill in color name
-    fireEvent.change(getByLabelText("Name:"), {
+    fireEvent.change(screen.getByLabelText("Name:"), {
       target: { value: "Test Color" },
     });
 
     // Fill in hex color value
-    fireEvent.change(getByLabelText("Hex:"), { target: { value: "#abcdef" } });
+    fireEvent.change(screen.getByLabelText("Hex:"), {
+      target: { value: "#abcdef" },
+    });
 
     // Submit the form
-    fireEvent.click(getByText("Submit Color"));
+    fireEvent.click(screen.getByText("Submit Color"));
 
     await waitFor(() =>
       expect(mockToast).toHaveBeenCalledWith({
