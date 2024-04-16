@@ -29,6 +29,7 @@ function FilterColors() {
         type="text"
         placeholder="Enter name or hex value"
         onChange={(e) => setSearchTerm(e.target.value)}
+        defaultValue={searchParams.get("query")?.toString()}
         className="w-full outline-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-1 focus:ring-blue-600 focus:border-blue-600 block p-2.5"
       />
     </form>
